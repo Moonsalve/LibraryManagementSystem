@@ -19,6 +19,7 @@ public class StudentTest {
 
     @Test
     void testBorrowBookWhenBookIsAvailable() {
+        assertEquals(true, book1.isAvailable());
         assertTrue(book1.isAvailable());
         assertTrue(student.borrowBook(book1));
         assertFalse(book1.isAvailable());
@@ -28,6 +29,7 @@ public class StudentTest {
     @Test
     void testBorrowBookWhenBookIsUnavailable() {
         book1.markAsUnavailable();
+        assertEquals(false, book1.isAvailable());
         assertFalse(student.borrowBook(book1));
         assertFalse(student.getBorrowedBooks().contains(book1));
     }
